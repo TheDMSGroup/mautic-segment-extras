@@ -51,5 +51,4 @@ class SegmentExtrasIntegration extends AbstractIntegration
     {
         return 'Segment Extras';
     }
-
 }
