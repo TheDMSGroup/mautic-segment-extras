@@ -19,5 +19,4 @@ class MauticSegmentExtrasBundle extends PluginBundleBase
     {
         return 'MauticLeadBundle';
     }
-
 }

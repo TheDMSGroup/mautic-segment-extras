@@ -15,11 +15,9 @@ use Mautic\CoreBundle\Controller\CommonController;
 
 class SegmentController extends CommonController
 {
-
     public function batchExportAction($segmentId = null)
     {
-
-        if(!$segmentId){
+        if (!$segmentId) {
             return $this->notFound('mautic.segmentextras.export.notfound');
         }
         $contactIds = $this->getSegmentLeadIdsForExport($segmentId);
