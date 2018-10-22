@@ -136,7 +136,7 @@ $listCommand = $view['translator']->trans('mautic.lead.lead.searchcommand.list')
                         <a class="label label-primary" href="<?php echo $view['router']->path(
                             'mautic_segment_extras_batch_export',
                             ['segmentId'=> $item->getId()]
-                        ); ?>" data-toggle="ajax"<?php echo (0 == $leadCounts[$item->getId()]) ? 'disabled=disabled' : ''; ?>>
+                        ); ?>" <?php echo (0 == $leadCounts[$item->getId()]) ? 'disabled=disabled' : ''; ?>>
                             <?php echo $view['translator']->transChoice(
                                 'mautic.lead.list.viewleads_count',
                                 $leadCounts[$item->getId()],
