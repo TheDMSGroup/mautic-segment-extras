@@ -12,6 +12,7 @@
 namespace MauticPlugin\MauticSegmentExtrasBundle\Controller;
 
 use Mautic\CoreBundle\Controller\CommonController;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class SegmentController extends CommonController
 {
@@ -86,8 +87,8 @@ class SegmentController extends CommonController
     {
         /** @var QueryBuilder $q */
         $q = $this->get('doctrine.orm.entity_manager')->getConnection()->createQueryBuilder();
-        $q->select('ll.lead_id')
-            ->from('lead_list_leads', 'lll')
+        $q->select('lll.lead_id')
+            ->from('lead_lists_leads', 'lll')
             ->where(
                 $q->expr()->eq('lll.manually_removed', ':false'),
                 $q->expr()->eq('lll.leadlist_id', ':segmentId')
