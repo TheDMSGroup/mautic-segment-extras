@@ -70,6 +70,7 @@ class SegmentController extends CommonController
                         }
                         fputcsv($handle, $values);
                     }
+                    $contactRepo->clear();
                 }
                 fclose($handle);
             },
