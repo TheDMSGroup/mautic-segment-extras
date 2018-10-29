@@ -2,7 +2,7 @@
 env:
   global:
     # The exact plugin folder/bundle name.
-    - "MAUTIC_PLUGIN=MauticApiServicesBundle"
+    - "MAUTIC_PLUGIN=MauticSegmentExtrasBundle"
 
 dist: precise
 
