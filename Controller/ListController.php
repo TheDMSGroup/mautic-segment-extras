@@ -16,7 +16,6 @@ use Mautic\LeadBundle\Entity\LeadListRepository;
 
 class ListController extends BaseController
 {
-
     /**
      * @param     $objectId
      * @param int $page
@@ -27,7 +26,7 @@ class ListController extends BaseController
     {
         $manuallyRemoved = 0;
         $listFilters     = ['manually_removed' => $manuallyRemoved];
-        if ($this->request->getMethod() === 'POST' && $this->request->request->has('includeEvents')) {
+        if ('POST' === $this->request->getMethod() && $this->request->request->has('includeEvents')) {
             $filters = [
                 'includeEvents' => InputHelper::clean($this->request->get('includeEvents', [])),
             ];
@@ -50,9 +49,8 @@ class ListController extends BaseController
 
         // get count first and pass it in. Its better this way. Trust me.
         /** @var LeadListRepository $listRepo */
-        $listRepo = $this->container->get('mautic.lead.repository.lead_list');
+        $listRepo  = $this->container->get('mautic.lead.repository.lead_list');
         $listCount = $listRepo->getLeadCount([$objectId]);
-
 
         return $this->generateContactsGrid(
             $objectId,
@@ -67,8 +65,8 @@ class ListController extends BaseController
             null,
             [],
             null,
-            "entity.lead_id",
-            "DESC",
+            'entity.lead_id',
+            'DESC',
             $listCount[$objectId]
         );
     }
