@@ -13,6 +13,7 @@ namespace MauticPlugin\MauticSegmentExtrasBundle\Controller;
 
 use Mautic\LeadBundle\Controller\ListController as BaseController;
 use Mautic\LeadBundle\Entity\LeadListRepository;
+use Mautic\CoreBundle\Helper\InputHelper;
 
 class ListController extends BaseController
 {
@@ -20,7 +21,7 @@ class ListController extends BaseController
      * @param     $objectId
      * @param int $page
      *
-     * @return JsonResponse|\Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @return mixed|\Symfony\Component\HttpFoundation\JsonResponse|\Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function contactsAction($objectId, $page = 1)
     {
@@ -67,7 +68,9 @@ class ListController extends BaseController
             null,
             'entity.lead_id',
             'DESC',
-            $listCount[$objectId]
+            $listCount[$objectId],
+            null,
+            null
         );
     }
 }
