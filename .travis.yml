@@ -35,6 +35,9 @@ before_install:
 
   # Clone the latest core release.
   - git clone -b staging --single-branch --depth 1 https://github.com/mautic/mautic.git /tmp/mautic
+  # TEMPORARY attempt to apply a patch until origin PR is accepted PR 6651
+  - cd /tmp/mautic
+  - curl -L "https://github.com/mautic/mautic/pull/6651.diff" | git apply -v
 
   # Combine core with our plugin.
   - mkdir -p /tmp/mautic/plugins/$MAUTIC_PLUGIN
