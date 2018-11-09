@@ -11,9 +11,9 @@
 
 namespace MauticPlugin\MauticSegmentExtrasBundle\Controller;
 
+use Mautic\CoreBundle\Helper\InputHelper;
 use Mautic\LeadBundle\Controller\ListController as BaseController;
 use Mautic\LeadBundle\Entity\LeadListRepository;
-use Mautic\CoreBundle\Helper\InputHelper;
 
 class ListController extends BaseController
 {
