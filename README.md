@@ -2,9 +2,8 @@
 ![](Assets/img/SegmentExtras.png)
 
 A bundle that extends Mautic Lead Bundle's Lead List (Segment) functionality.
+Can be used as a blueprint for making special segment changes.
 
-
-
-
-
-
+Currently it:
+* Allows you to easily export a segment with alternate navigation.
+* Speeds up the contact list.
