@@ -21,6 +21,11 @@ class SegmentController extends CommonController
         if (!$segmentId) {
             return $this->notFound('mautic.segmentextras.export.notfound');
         }
+
+        if (!$this->get('mautic.security')->isAdmin() && $this->get('mautic.security')->isGranted('lead:export:disable')) {
+            return $this->accessDenied();
+        }
+
         $contactIds = $this->getSegmentLeadIdsForExport($segmentId);
 
         // adjust $size for memory vs. speed

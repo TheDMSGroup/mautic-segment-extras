@@ -133,16 +133,20 @@ $listCommand = $view['translator']->trans('mautic.lead.lead.searchcommand.list')
                         <?php endif; ?>
                     </td>
                     <td class="visible-md visible-lg">
-                        <a class="label label-primary" href="<?php echo $view['router']->path(
-                            'mautic_segment_extras_batch_export',
-                            ['segmentId'=> $item->getId()]
-                        ); ?>" <?php echo (0 == $leadCounts[$item->getId()]) ? 'disabled=disabled' : ''; ?>>
+                        <?php if (0 === $leadCounts[$item->getId()]): ?>
+                        <label class="label label-primary"
+                        <?php else: ?>
+                        <a class="label label-primary"
+                           href="<?php echo ($view['security']->isGranted('lead:export:disable') && !$view['security']->isAdmin()) ?
+                                $view['router']->path('mautic_contact_index', ['search' => $view['translator']->trans('mautic.lead.lead.searchcommand.list').':'.$item->getAlias()]) :
+                                $view['router']->path('mautic_segment_extras_batch_export', ['segmentId'=> $item->getId()]);
+                            ?>"
+                        <?php endif; ?>>
                             <?php echo $view['translator']->transChoice(
                                 'mautic.lead.list.viewleads_count',
                                 $leadCounts[$item->getId()],
                                 ['%count%' => $leadCounts[$item->getId()]]
-                            ); ?>
-                        </a>
+                            ); ?></<?php echo (0 === $leadCounts[$item->getId()]) ? 'label' : 'a' ?>>
                     </td>
                     <td class="visible-md visible-lg"><?php echo $item->getId(); ?></td>
                 </tr>
