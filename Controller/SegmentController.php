@@ -69,7 +69,8 @@ class SegmentController extends CommonController
                                 $fields
                             );
                         }
-                        $ip = $lead->getIpAddresses()->last()->getIpAddress();
+                        $ipAddress = $lead->getIpAddresses()->last();
+                        $ip = $ipAddress ? $ipAddress->getIpAddress() : '';
                         $values = [$id, $ip];
                         foreach ($fieldNames as $fieldName) {
                             $values[] = $lead->getFieldValue($fieldName);
